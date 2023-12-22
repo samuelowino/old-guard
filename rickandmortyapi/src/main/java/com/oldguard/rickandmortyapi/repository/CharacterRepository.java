@@ -12,19 +12,13 @@ import java.util.Optional;
 public interface CharacterRepository extends JpaRepository<ShowCharacter, Long> {
     Optional<ShowCharacter> findByName(String name);
 
-    Optional<ShowCharacter> findByStatus(String status);
+    Page<ShowCharacter> findAllByStatus(String status, Pageable pageable);
 
-
-    Page<ShowCharacter> findAllByStatus( String status, Pageable pageable);
-
-   
     Page<ShowCharacter> findByNameContainingIgnoreCase(String name, Pageable pageable);
-    
+
     Page<ShowCharacter> findByNameContainingIgnoreCaseAndStatusContainingIgnoreCase(String name, String status, Pageable pageable);
 
     boolean existsByName(String name);
-
-    
 
 
 }
